@@ -1,0 +1,98 @@
+package semana_05;
+
+public class ArregloSueldos {
+	
+	private double [] sueldo = {2400.5, 800.4, 1500.2, 1000.3, 4700.1, 600.0, 3300.8, 2600.6, 5100.9, 2000.7};
+
+	public ArregloSueldos() {
+		
+	}
+
+	public int tamanio() {
+		return sueldo.length;
+	}
+	
+	public double obtener(int pos ) {
+		return sueldo[pos];
+	}
+	
+	public double sueldoPromedio() {
+		double sumaSueldo = 0.0;
+		for(int i=0;i<sueldo.length;i++) {
+			sumaSueldo+=obtener(i);
+		}
+		return sumaSueldo;
+	}
+	
+	public double sueldoMayor() {
+		double sueldoMayor = obtener(0);
+		for(int i=0;i<sueldo.length;i++) {
+			if(obtener(i)>sueldoMayor) {
+				sueldoMayor = obtener(i);
+			}
+		}
+		return sueldoMayor;
+	}
+	
+	public double sueldoMenor() {
+		double sueldoMenor = obtener(0);
+		for(int i=0;i<sueldo.length;i++) {
+			if(obtener(i)<sueldoMenor) {
+				sueldoMenor = obtener(i);
+			}
+		}
+		return sueldoMenor;
+	}
+	
+	public double cantMayoresSueldoPromedio () {
+		int contMayorPromedio =0;
+		for ( int i=0;i<sueldo.length;i++) {
+			if(obtener(i)>=sueldoPromedio()) {
+				contMayorPromedio++;
+			}
+		}
+		return contMayorPromedio;
+	}
+	
+	public double cantMenoresSueldoPromedio () {
+		int contMenorPromedio =0;
+		for ( int i=0;i<sueldo.length;i++) {
+			if(obtener(i)<sueldoPromedio()) {
+				contMenorPromedio++;
+			}
+		}
+		return contMenorPromedio;
+	}
+	
+	public double posSegundoSueldoMayorAlMinimo(){
+		int contador = 0;
+		for (int i =0; i<sueldo.length;i++) {
+			if(obtener(i)>850.0) {
+				contador++;
+				if(contador==2) {
+					return obtener(i);
+				}
+			}
+		}
+		return -1;
+	}
+	
+	public double posUltimoSueldoMenorAlMinimo() {
+		for (int i = sueldo.length-1;i>=0;i--) {
+			if(obtener(i)<850.0) {
+				return obtener(i);
+			}
+		}
+		return -1;
+	}
+	
+	public void generarSueldos() {
+		for(int i=0 ; i<sueldo.length;i++) {
+			sueldo[i] = aleatorio(799.9,4999.9);
+			}
+	}
+	
+	private double aleatorio(double min, double max) {
+		return (double)((max - min + 1) * Math.random()) + min;
+		}
+}

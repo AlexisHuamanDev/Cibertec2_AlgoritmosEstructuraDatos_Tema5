@@ -1,0 +1,115 @@
+package semana_05;
+
+import java.util.Arrays;
+
+public class ArregloNotas {
+	
+		private int nota [] = {11, 10, 16, 18, 15, 13, 20, 12, 19, 17};
+
+		public ArregloNotas() {
+			
+		}
+		
+		public int tamanio () {
+			return nota.length;
+		}
+		
+		public int obtener (int pos) {
+			return nota[pos];
+		}
+		
+		public double notaPromedio () {
+			double sumaSueldo=0.0;
+			for(int i=0; i<nota.length;i++) {
+				sumaSueldo+=obtener(i);
+			}
+			return sumaSueldo/tamanio();
+		}
+		
+		public int notaMayor() {
+			int mayor = obtener(0);
+			
+			for (int i=0;i<nota.length;i++) {
+				if(obtener(i)>mayor) {
+					mayor = obtener(i);
+				}
+				
+			}
+			 return mayor;
+		}
+		
+		public int notaMenor() {
+			int menor = obtener(0);
+			for(int i=0;i<nota.length;i++) {
+				if(obtener(i)<menor) {
+					 menor = obtener(i);
+				}
+			}
+			return menor;
+		}
+		
+		public int cantNotasAprobatorias() {
+			int cantidad=0;
+			for ( int i=0;i<nota.length;i++) {
+				if(obtener(i)>=13) {
+					cantidad++;
+				}
+			}
+			return cantidad;
+		}
+		
+		public int cantNotasDesaprobatorias() {
+			int cantidad = 0;
+			for ( int i=0;i<nota.length;i++) {
+				if(obtener(i)<13) {
+					cantidad ++;
+				}
+			}
+			return cantidad;
+		}
+		
+		public int cantNotasMayoresA15() {
+			int cantidad=0;
+			for ( int i=0;i<nota.length;i++) {
+				if(obtener(i)>15) {
+					cantidad++;
+				}
+			}
+			return cantidad;
+		}
+		
+		public int posPrimeraNotaAprobatoria() {
+		    for (int i = 0; i < nota.length; i++) {
+		        if (nota[i] >= 13) {
+		            return i;
+		        }
+		    }
+		    return -1;
+		}
+		
+				
+		public int posPenultimaNotaDesaprobatoria() {
+			int acumulador=0;
+			for(int i=nota.length-1;i>=0;i--) {
+				if(obtener(i)<13) {
+					acumulador ++;
+					{if(acumulador ==2)
+					{
+						return i;
+					}
+						
+					}
+				}
+			}
+			return -1;
+		}
+		
+		public void generarNotas() {
+			for(int i=0 ; i<nota.length;i++) {
+				nota[i] = aleatorio(0, 20);
+			}
+		}
+		private int aleatorio(int min, int max) {
+			return (int)((max - min + 1) * Math.random()) + min;
+}
+}

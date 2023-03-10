@@ -1,0 +1,108 @@
+package semana_05;
+
+import java.util.Arrays;
+
+public class ArregloSueldos {
+	
+	private double [] sueldo = {2400.5, 800.4, 1500.2, 1000.3, 4700.1, 600.0, 3300.8, 2600.6, 5100.9, 2000.7};
+	
+	public ArregloSueldos() {
+		
+	}
+
+	public int tamanio() {
+		return sueldo.length;
+	}
+	
+	public double obtener(int pos ) {
+		return sueldo[pos];
+	}
+	
+	public double sueldoPromedio() {
+		double sumaSueldo = 0.0;
+		for(int i=0;i<sueldo.length;i++) {
+			sumaSueldo+=obtener(i);
+		}
+		return sumaSueldo/tamanio();
+	}
+	
+	public double sueldoMayor() {
+		double sueldoMayor = obtener(0);
+		for(int i=0;i<sueldo.length;i++) {
+			if(obtener(i)>sueldoMayor) {
+				sueldoMayor = obtener(i);
+			}
+		}
+		return sueldoMayor;
+	}
+	
+	public double sueldoMenor() {
+		double sueldoMenor = obtener(0);
+		for(int i=0;i<sueldo.length;i++) {
+			if(obtener(i)<sueldoMenor) {
+				sueldoMenor = obtener(i);
+			}
+		}
+		return sueldoMenor;
+	}
+	
+	public int cantMayoresSueldoPromedio () {
+		int contMayorPromedio =0;
+		for ( int i=0;i<sueldo.length;i++) {
+			if(obtener(i)>=sueldoPromedio()) {
+				contMayorPromedio++;
+			}
+		}
+		return contMayorPromedio;
+	}
+	
+	public int cantMenoresSueldoPromedio () {
+		int contMenorPromedio =0;
+		for ( int i=0;i<sueldo.length;i++) {
+			if(obtener(i)<sueldoPromedio()) {
+				contMenorPromedio++;
+			}
+		}
+		return contMenorPromedio;
+	}
+	
+	
+
+	public double posSegundoSueldoMayorAlMinimo() {
+		 Arrays.sort(sueldo);
+		    double mayor = Double.MIN_VALUE;
+		    double segundoMayor = Double.MIN_VALUE;
+		    for (int i = 0; i < sueldo.length; i++) {
+		        if (sueldo[i] > mayor) {
+		            // Si se encuentra un nuevo mayor, se actualiza el segundo mayor
+		            segundoMayor = mayor;
+		            mayor = sueldo[i];
+		        } else if (sueldo[i] > segundoMayor && sueldo[i] > 850.0) {
+		            // Si se encuentra un sueldo mayor al segundo mayor y mayor a 850.0, se actualiza el segundo mayor
+		            segundoMayor = sueldo[i];
+		        }
+		    }
+		    if (segundoMayor > 850.0) {
+		        // Buscar la posición del segundo mayor
+		        for (int i = 0; i < sueldo.length; i++) {
+		            if (sueldo[i] == segundoMayor) {
+		                return i;
+		            }
+		        }
+		    }
+		    // Si no se encontró un segundo sueldo mayor a 850.0, se retorna -1
+		    return -1;
+		}
+
+	
+	
+	public void generarSueldos() {
+		for(int i=0 ; i<sueldo.length;i++) {
+			sueldo[i] = aleatorio(799.9,4999.9);
+			}
+	}
+	
+	private double aleatorio(double min, double max) {
+		return (int)((max - min + 1) * Math.random()) + min;
+		}
+}

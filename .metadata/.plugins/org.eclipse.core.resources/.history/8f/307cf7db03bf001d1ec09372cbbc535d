@@ -1,0 +1,11 @@
+package semana_05;
+
+public class ArregloPrecios {
+
+	private double precio = {240.5, 350.2, 80.4, 100.3, 470.1, 60.0, 330.8, 260.6, 510.9, 200.7};
+	
+
+	
+}
+
+

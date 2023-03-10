@@ -1,0 +1,111 @@
+package controlador;
+
+public class ArregloEdades {
+	
+	private int edad [] = {27, 22, 13, 12, 25, 11, 29, 70, 15, 21};
+	
+	//constructor
+	public ArregloEdades() {
+			}
+	
+	public int tamanio() {
+		return edad.length;
+	}
+	
+	public int obtener(int pos) {
+		return edad[pos];
+	}
+	
+	//Operaciones adicionales
+	
+	//* Un método edadPromedio que retorne el promedio de todas las edades.
+	
+	public double edadPromedio() {
+		double suma=0;
+		
+		for (int i= 0;i<edad.length;i++) {
+			suma += obtener(i);
+		}
+		return suma/tamanio();
+	}
+	// * Un método edadMayor que retorne la mayor de todas las edades.
+
+	public int edadMayor() {
+	  int mayor = edad[0];
+
+      for(int i= 0;i<edad.length;i++){
+             if(edad[i] > mayor){
+                 mayor = edad[i];
+          }
+      }
+	return mayor;
+}
+	// Un método edadMenor que retorne la menor de todas las edades.
+	public int edadMenor() {
+		int menor = edad[0];
+		
+		 for(int i= 0;i<edad.length;i++){
+             if(edad[i] < menor){
+                menor = edad[i];
+          }
+      }
+	return menor;
+	}
+	
+	//Un método cantMayoresEdad que retorne la cantidad de personas mayores de edad.
+	
+	public int cantMayoresEdad() {
+		
+		 int cantPersonasMayorEdad=0;
+	        for (int i = 0; i < edad.length; i++) {
+	            if(obtener(i)>=18){
+	            	 cantPersonasMayorEdad ++;
+	            }
+	        }
+	    return cantPersonasMayorEdad;
+	}
+	
+	public int cantMenoresEdad() {
+		
+		 int cantPersonasMenorEdad=0;
+	        for (int i = 0; i < edad.length; i++) {
+	            if(obtener(i)<18){
+	                cantPersonasMenorEdad ++;
+	            }
+	        }
+	    return cantPersonasMenorEdad;
+	    
+	}
+	
+	public int posPrimeraEdadAdolescente() {
+		
+		   for (int i = 0; i < edad.length; i++) {
+	            if(obtener(i)>=12 && obtener(i)<=20){
+	                return i;
+	}  
+}
+		return -1;			   
+}
+	
+	public int posUltimaEdadAdolescente () {
+		
+		for ( int i = edad.length-1;i>=0;i-- ) {
+			if(obtener(i)>=12 && obtener (i)<=20) {
+				return i;
+			}
+	}
+	return -1 ;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
